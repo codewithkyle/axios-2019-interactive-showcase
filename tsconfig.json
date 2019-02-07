@@ -1,7 +1,7 @@
 
 {
     "compilerOptions": {
-        "outDir": "./_compiled",
+        "outDir": "./docs",
         "rootDir": "./app/typescript",
         "sourceMap": true,
         "noImplicitAny": true,
