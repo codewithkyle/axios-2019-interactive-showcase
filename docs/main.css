@@ -68,32 +68,46 @@ body {
   height: 678px;
   position: relative;
   margin-right: 100px; }
+  .c-interactive-element a {
+    text-decoration: none; }
   .c-interactive-element .c-interactive-element_copy {
     text-transform: uppercase;
-    color: #723789;
+    color: rgba(114, 55, 137, 0.87);
     font-size: 21px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
-    display: inline-block;
-    width: 100%;
+    display: block;
     text-align: center;
-    margin-top: 16px; }
+    text-decoration: none;
+    z-index: 2;
+    margin-top: 8px; }
   .c-interactive-element .c-interactive-element_circle {
     fill: none;
     stroke: #abb2b3;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 5px;
-    stroke-dasharray: 0 9.0368; }
-  .c-interactive-element .c-interactive-element_heart {
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+    stroke-dasharray: 0 9.0368;
+    animation: rotateCircle 120s linear infinite; }
+  .c-interactive-element .c-interactive-element_clock,
+  .c-interactive-element .c-interactive-element_heart,
+  .c-interactive-element .c-interactive-element_checkmark {
+    display: inline-flex;
     position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    cursor: pointer; }
+    .c-interactive-element .c-interactive-element_clock svg,
+    .c-interactive-element .c-interactive-element_heart svg,
+    .c-interactive-element .c-interactive-element_checkmark svg {
+      width: 100px;
+      height: 100px;
+      z-index: 2; }
+  .c-interactive-element .c-interactive-element_heart {
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    cursor: pointer; }
+    transform: translate3d(-50%, -50%, 0); }
     .c-interactive-element .c-interactive-element_heart:hover .c-interactive-element_heart_icon_inner {
       animation: heartHoverFill 900ms cubic-bezier(0, 0, 0.2, 1) infinite; }
     .c-interactive-element .c-interactive-element_heart .c-interactive-element_heart_icon {
@@ -103,6 +117,90 @@ body {
       opacity: 0;
       transform-origin: center;
       transform: scale(0) translate3d(-1px, -8px, 0); }
+  .c-interactive-element .c-interactive-element_checkmark {
+    top: 50%;
+    transform: translateY(-50%);
+    right: -60px; }
+    .c-interactive-element .c-interactive-element_checkmark::before {
+      content: "";
+      display: inline-block;
+      width: 175%;
+      height: 175%;
+      border-radius: 100%;
+      background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
+      position: absolute; }
+    .c-interactive-element .c-interactive-element_checkmark:hover .c-interactive-element_checkmark_check {
+      animation: checkLoop 400ms cubic-bezier(0.4, 0, 0.6, 1); }
+    .c-interactive-element .c-interactive-element_checkmark svg {
+      transform: translateX(-3px); }
+    .c-interactive-element .c-interactive-element_checkmark .c-interactive-element_checkmark_circle,
+    .c-interactive-element .c-interactive-element_checkmark .c-interactive-element_checkmark_check {
+      fill: none;
+      stroke: rgba(114, 55, 137, 0.87);
+      stroke-linecap: round; }
+    .c-interactive-element .c-interactive-element_checkmark .c-interactive-element_checkmark_circle {
+      stroke-width: 7px; }
+    .c-interactive-element .c-interactive-element_checkmark .c-interactive-element_checkmark_check {
+      stroke-width: 8px;
+      stroke-dasharray: 120;
+      stroke-dashoffset: 0; }
+  .c-interactive-element .c-interactive-element_clock {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -60px; }
+    .c-interactive-element .c-interactive-element_clock::before {
+      content: "";
+      display: inline-block;
+      width: 175%;
+      height: 175%;
+      border-radius: 100%;
+      background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
+      position: absolute; }
+    .c-interactive-element .c-interactive-element_clock:hover .c-interactive-element_clock_top {
+      animation: ringTicker 150ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .c-interactive-element .c-interactive-element_clock:hover .c-interactive-element_clock_button {
+      stroke-dashoffset: -5;
+      transition: all 75ms cubic-bezier(0, 0, 0.2, 1); }
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_cricle,
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_top {
+      fill: rgba(114, 55, 137, 0.87); }
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_top {
+      transform-origin: 50px 27px; }
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_button {
+      stroke-dasharray: 10;
+      stroke-dashoffset: 0;
+      transition: all 75ms cubic-bezier(0.4, 0, 0.6, 1); }
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_hand,
+    .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_button {
+      fill: none;
+      stroke: rgba(114, 55, 137, 0.87);
+      stroke-linecap: round;
+      stroke-width: 7px; }
+
+@keyframes ringTicker {
+  0% {
+    transform: rotate(0deg) translate(-12px, -5px); }
+  25% {
+    transform: rotate(-15deg) translate(-12px, -5px); }
+  75% {
+    transform: rotate(15deg) translate(-12px, -5px); }
+  100% {
+    transform: rotate(0deg) translate(-12px, -5px); } }
+
+@keyframes checkLoop {
+  0% {
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dashoffset: -120; }
+  100% {
+    stroke-dashoffset: -240;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1); } }
+
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(360deg); } }
 
 @keyframes heartHoverFill {
   0% {
