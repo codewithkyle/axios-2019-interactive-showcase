@@ -7,13 +7,13 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:typescript": "onchange ./app/typescript/**/*.ts -- npm run compile:typescript",
-    "dev:sass": "onchange ./app/sass/**/*.scss -- npm run compile:devScss",
+    "dev:sass": "onchange ./app/sass/**/*.scss -- npm run dev:build",
     "dev:build": "node-sass ./app/sass/dev.scss ./docs/main.css",
     "compile": "npm-run-all compile:*",
     "compile:typescript": "tsc",
     "compile:uglify": "uglifyjs ./docs/app.js -c -m -o ./docs/app.js",
     "compile:scss": "node-sass ./app/sass/production.scss ./docs/main.css --output-style compressed",
-    "preview": "http-server -o",
+    "preview": "http-server ./docs -o",
     "lint": "npm-run-all lint:*",
     "lint:typescript": "tslint -c .tslintrc.js -p tsconfig.json -t verbose",
     "lint:scss": "stylelint ./app/sass/**/*.scss --cache"

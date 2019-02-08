@@ -1,2 +1,7 @@
 // Used for production. Only import files that should be copied in the production enviroment.
 // ============================================================================
+
+@import './config';
+
+@import './interactive-showcase';
+@import './interactive-element';

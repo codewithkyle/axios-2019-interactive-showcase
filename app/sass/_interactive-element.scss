@@ -1,0 +1,77 @@
+.c-interactive-element{
+    display: inline-block;
+    width: 678px;
+    height: 678px;
+    position: relative;
+    margin-right: 100px;
+
+    .c-interactive-element_copy{
+        text-transform: uppercase;
+        color: $brand-purple;
+        font-size: 21px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: bold;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-top: 16px;
+    }
+
+    .c-interactive-element_circle{
+        fill: none;
+        stroke: $gray;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+        stroke-dasharray: 0 9.0368;
+    }
+
+    .c-interactive-element_heart{
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        cursor: pointer;
+
+        &:hover{
+            .c-interactive-element_heart_icon_inner{
+                animation: heartHoverFill 900ms $ease-in infinite;
+            }
+        }
+
+        .c-interactive-element_heart_icon{
+            fill: rgba($brand-purple, 0.87);
+        }
+
+        .c-interactive-element_heart_icon_inner{
+            fill: $brand-purple;
+            opacity: 0;
+            transform-origin: center;
+            transform: scale(0) translate3d(-1px, -8px, 0);
+        }
+    }
+}
+
+@keyframes heartHoverFill{
+    0%{
+        transform: scale(0) translate3d(-1px, -8px, 0);
+        opacity: 0;
+    }
+    25%{
+        transform: scale(1) translate3d(-1px, -8px, 0);
+        opacity: 0.15;
+    }
+    50%{
+        transform: scale(1) translate3d(-1px, -8px, 0);
+        opacity: 0.15;
+    }
+    75%,
+    100%{
+        transform: scale(1) translate3d(-1px, -8px, 0);
+        opacity: 0;
+        animation-timing-function: $ease-sharp;
+    }
+}
