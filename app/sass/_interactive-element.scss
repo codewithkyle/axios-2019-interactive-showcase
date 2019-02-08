@@ -34,7 +34,9 @@
 
     .c-interactive-element_clock,
     .c-interactive-element_heart,
-    .c-interactive-element_checkmark{
+    .c-interactive-element_checkmark,
+    .c-interactive-element_chat,
+    .c-interactive-element_chart{
         display: inline-flex;
         position: absolute;
         justify-content: center;
@@ -85,6 +87,7 @@
             border-radius: 100%;
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
+            pointer-events: none;
         }
 
         &:hover{
@@ -129,6 +132,7 @@
             border-radius: 100%;
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
+            pointer-events: none;
         }
 
         &:hover{
@@ -140,6 +144,11 @@
                 stroke-dashoffset: -5;
                 transition: all 75ms $ease-in;
             }
+        }
+
+        svg{
+            width: 95px;
+            height: 95px;
         }
 
         .c-interactive-element_clock_cricle,
@@ -164,6 +173,209 @@
             stroke-linecap: round;
             stroke-width: 7px;
         }
+    }
+
+    .c-interactive-element_chat{
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::before{
+            content:"";
+            display: inline-block;
+            width: 175%;
+            height: 175%;
+            border-radius: 100%;
+            background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:hover{
+            .c-interactive-element_chat_item_1_hover,
+            .c-interactive-element_chat_item_2_hover{
+                animation: chatBubbleFill 2000ms $ease-in infinite;
+            }
+
+            .c-interactive-element_chat_item_1_hover{
+                animation-delay: 1000ms;
+            }
+
+            .c-interactive-element_chat_item_2{
+                animation: chatBubble2Wiggle 2000ms $ease infinite;
+            }
+
+            .c-interactive-element_chat_item_1{
+                animation: chatBubble1Wiggle 2000ms $ease infinite;
+            }
+        }
+
+        .c-interactive-element_chat_item_1,
+        .c-interactive-element_chat_item_2{
+            transform-origin: center;
+            transform: translate3d(2px,2px,0);
+        }
+
+        .c-interactive-element_chat_item_1_white,
+        .c-interactive-element_chat_item_2_white{
+            fill: #fff;
+        }
+
+        .c-interactive-element_chat_item_1_oultine,
+        .c-interactive-element_chat_item_2_oultine{
+            fill: rgba($brand-purple, 0.87);
+        }
+
+        .c-interactive-element_chat_item_1_hover,
+        .c-interactive-element_chat_item_2_hover{
+            fill: $brand-purple;
+            opacity: 0;
+        }
+    }
+
+    .c-interactive-element_chart{
+        bottom: -64px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::before{
+            content:"";
+            display: inline-block;
+            width: 175%;
+            height: 175%;
+            border-radius: 100%;
+            background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:hover{
+            .c-interactive-element_chart_small,
+            .c-interactive-element_chart_medium,
+            .c-interactive-element_chart_large{
+                animation: pieChartWiggle 2000ms linear infinite;
+            }
+
+            .c-interactive-element_chart_medium{
+                animation-delay: 500ms;
+
+                .c-interactive-element_chart_hover{
+                    animation-delay: 500ms;
+                }
+            }
+
+            .c-interactive-element_chart_large{
+                animation-delay: 1000ms;
+
+                .c-interactive-element_chart_hover{
+                    animation-delay: 1000ms;
+                }
+            }
+
+            .c-interactive-element_chart_hover{
+                animation: pieChartFill 2000ms $ease-in infinite;
+            }
+        }
+
+        .c-interactive-element_chart_fix{
+            transform: translate3d(3px, 3px, 0);
+        }
+
+        .c-interactive-element_chart_solid{
+            fill: rgba($brand-purple, 0.87);
+        }
+
+        .c-interactive-element_chart_hover{
+            fill: $brand-purple;
+            opacity: 0;
+        }
+
+        .c-interactive-element_chart_small,
+        .c-interactive-element_chart_medium,
+        .c-interactive-element_chart_large{
+            transform-origin: center;
+            transform: translate3d(0,0,0);
+        }
+    }
+}
+
+@keyframes pieChartFill{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.15;
+    }
+    50%,
+    100%{
+        opacity: 0;
+        animation-timing-function: $ease-sharp;
+    }
+}
+
+@keyframes pieChartWiggle{
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    10%{
+        transform: translate3d(2px,2px,0);
+    }
+    30%{
+        transform: translate3d(-2px,-2px,0);
+    }
+    40%,
+    100%{
+        transform: translate3d(0,0,0);
+    }
+}
+
+@keyframes chatBubble2Wiggle{
+    0%{
+        transform: translate3d(2px,2px,0);
+    }
+    25%{
+        transform: translate3d(6px, 6px,0);
+    }
+    50%{
+        transform: translate3d(2px,2px,0);
+    }
+    75%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(2px,2px,0);
+    }
+}
+
+@keyframes chatBubble1Wiggle{
+    0%{
+        transform: translate3d(2px,2px,0);
+    }
+    25%{
+        transform: translate3d(4px,4px,0);
+    }
+    50%{
+        transform: translate3d(2px,2px,0);
+    }
+    75%{
+        transform: translate3d(-1px,-1px,0);
+    }
+    100%{
+        transform: translate3d(2px,2px,0);
+    }
+}
+
+@keyframes chatBubbleFill{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.15;
+    }
+    50%,
+    100%{
+        opacity: 0;
+        animation-timing-function: $ease-sharp;
     }
 }
 

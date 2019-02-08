@@ -18,7 +18,7 @@ body {
 
 .c-interactive-showcase {
   display: flex;
-  padding: 10vh 0;
+  padding: 200px 0;
   justify-content: center;
   background-color: #fff;
   width: 100%;
@@ -91,7 +91,9 @@ body {
     animation: rotateCircle 120s linear infinite; }
   .c-interactive-element .c-interactive-element_clock,
   .c-interactive-element .c-interactive-element_heart,
-  .c-interactive-element .c-interactive-element_checkmark {
+  .c-interactive-element .c-interactive-element_checkmark,
+  .c-interactive-element .c-interactive-element_chat,
+  .c-interactive-element .c-interactive-element_chart {
     display: inline-flex;
     position: absolute;
     justify-content: center;
@@ -100,7 +102,9 @@ body {
     cursor: pointer; }
     .c-interactive-element .c-interactive-element_clock svg,
     .c-interactive-element .c-interactive-element_heart svg,
-    .c-interactive-element .c-interactive-element_checkmark svg {
+    .c-interactive-element .c-interactive-element_checkmark svg,
+    .c-interactive-element .c-interactive-element_chat svg,
+    .c-interactive-element .c-interactive-element_chart svg {
       width: 100px;
       height: 100px;
       z-index: 2; }
@@ -128,7 +132,8 @@ body {
       height: 175%;
       border-radius: 100%;
       background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
-      position: absolute; }
+      position: absolute;
+      pointer-events: none; }
     .c-interactive-element .c-interactive-element_checkmark:hover .c-interactive-element_checkmark_check {
       animation: checkLoop 400ms cubic-bezier(0.4, 0, 0.6, 1); }
     .c-interactive-element .c-interactive-element_checkmark svg {
@@ -155,12 +160,16 @@ body {
       height: 175%;
       border-radius: 100%;
       background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
-      position: absolute; }
+      position: absolute;
+      pointer-events: none; }
     .c-interactive-element .c-interactive-element_clock:hover .c-interactive-element_clock_top {
       animation: ringTicker 150ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
     .c-interactive-element .c-interactive-element_clock:hover .c-interactive-element_clock_button {
       stroke-dashoffset: -5;
       transition: all 75ms cubic-bezier(0, 0, 0.2, 1); }
+    .c-interactive-element .c-interactive-element_clock svg {
+      width: 95px;
+      height: 95px; }
     .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_cricle,
     .c-interactive-element .c-interactive-element_clock .c-interactive-element_clock_top {
       fill: rgba(114, 55, 137, 0.87); }
@@ -176,6 +185,136 @@ body {
       stroke: rgba(114, 55, 137, 0.87);
       stroke-linecap: round;
       stroke-width: 7px; }
+  .c-interactive-element .c-interactive-element_chat {
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%); }
+    .c-interactive-element .c-interactive-element_chat::before {
+      content: "";
+      display: inline-block;
+      width: 175%;
+      height: 175%;
+      border-radius: 100%;
+      background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
+      position: absolute;
+      pointer-events: none; }
+    .c-interactive-element .c-interactive-element_chat:hover .c-interactive-element_chat_item_1_hover,
+    .c-interactive-element .c-interactive-element_chat:hover .c-interactive-element_chat_item_2_hover {
+      animation: chatBubbleFill 2000ms cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .c-interactive-element .c-interactive-element_chat:hover .c-interactive-element_chat_item_1_hover {
+      animation-delay: 1000ms; }
+    .c-interactive-element .c-interactive-element_chat:hover .c-interactive-element_chat_item_2 {
+      animation: chatBubble2Wiggle 2000ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .c-interactive-element .c-interactive-element_chat:hover .c-interactive-element_chat_item_1 {
+      animation: chatBubble1Wiggle 2000ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_1,
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_2 {
+      transform-origin: center;
+      transform: translate3d(2px, 2px, 0); }
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_1_white,
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_2_white {
+      fill: #fff; }
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_1_oultine,
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_2_oultine {
+      fill: rgba(114, 55, 137, 0.87); }
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_1_hover,
+    .c-interactive-element .c-interactive-element_chat .c-interactive-element_chat_item_2_hover {
+      fill: #723789;
+      opacity: 0; }
+  .c-interactive-element .c-interactive-element_chart {
+    bottom: -64px;
+    left: 50%;
+    transform: translateX(-50%); }
+    .c-interactive-element .c-interactive-element_chart::before {
+      content: "";
+      display: inline-block;
+      width: 175%;
+      height: 175%;
+      border-radius: 100%;
+      background: radial-gradient(#fff 50%, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0) 100%);
+      position: absolute;
+      pointer-events: none; }
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_small,
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_medium,
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_large {
+      animation: pieChartWiggle 2000ms linear infinite; }
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_medium {
+      animation-delay: 500ms; }
+      .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_medium .c-interactive-element_chart_hover {
+        animation-delay: 500ms; }
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_large {
+      animation-delay: 1000ms; }
+      .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_large .c-interactive-element_chart_hover {
+        animation-delay: 1000ms; }
+    .c-interactive-element .c-interactive-element_chart:hover .c-interactive-element_chart_hover {
+      animation: pieChartFill 2000ms cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_fix {
+      transform: translate3d(3px, 3px, 0); }
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_solid {
+      fill: rgba(114, 55, 137, 0.87); }
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_hover {
+      fill: #723789;
+      opacity: 0; }
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_small,
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_medium,
+    .c-interactive-element .c-interactive-element_chart .c-interactive-element_chart_large {
+      transform-origin: center;
+      transform: translate3d(0, 0, 0); }
+
+@keyframes pieChartFill {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 0.15; }
+  50%,
+  100% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); } }
+
+@keyframes pieChartWiggle {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  10% {
+    transform: translate3d(2px, 2px, 0); }
+  30% {
+    transform: translate3d(-2px, -2px, 0); }
+  40%,
+  100% {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes chatBubble2Wiggle {
+  0% {
+    transform: translate3d(2px, 2px, 0); }
+  25% {
+    transform: translate3d(6px, 6px, 0); }
+  50% {
+    transform: translate3d(2px, 2px, 0); }
+  75% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(2px, 2px, 0); } }
+
+@keyframes chatBubble1Wiggle {
+  0% {
+    transform: translate3d(2px, 2px, 0); }
+  25% {
+    transform: translate3d(4px, 4px, 0); }
+  50% {
+    transform: translate3d(2px, 2px, 0); }
+  75% {
+    transform: translate3d(-1px, -1px, 0); }
+  100% {
+    transform: translate3d(2px, 2px, 0); } }
+
+@keyframes chatBubbleFill {
+  0% {
+    opacity: 0; }
+  25% {
+    opacity: 0.15; }
+  50%,
+  100% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); } }
 
 @keyframes ringTicker {
   0% {

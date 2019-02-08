@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.4191 122.3626">
+  <g class="c-interactive-element_chart_small">
+    <path class="c-interactive-element_chart_solid" d="M123.7655,50.3087a61.1895,61.1895,0,0,0-55.5568-47.49V59.3842h56.9145A61.0122,61.0122,0,0,0,123.7655,50.3087Zm-46.4813,0V13.4418a52.3748,52.3748,0,0,1,37.1366,36.8669Z" transform="translate(-2.7905 -2.8187)"/>
+    <path class="c-interactive-element_chart_hover" d="M114.42,50.31H77.28V13.44A52.37,52.37,0,0,1,114.42,50.31Z" transform="translate(-2.7905 -2.8187)"/>
+  </g>
+  <g class="c-interactive-element_chart_large">
+    <path class="c-interactive-element_chart_solid" d="M95.6766,105.3918,59.1332,68.8484V2.8774A61.25,61.25,0,0,0,64.05,125.1813a60.86,60.86,0,0,0,30.4452-8.136,61.4714,61.4714,0,0,0,7.64-5.1958ZM64.05,116.1058A52.1788,52.1788,0,0,1,50.0577,13.6578V72.6085l37.751,37.7509A51.8448,51.8448,0,0,1,64.05,116.1058Z" transform="translate(-2.7905 -2.8187)"/>
+    <path class="c-interactive-element_chart_hover" d="M87.81,110.36a52.1691,52.1691,0,1,1-37.75-96.7V72.61Z" transform="translate(-2.7905 -2.8187)"/>
+  </g>
+  <g class="c-interactive-element_chart_medium">
+    <path class="c-interactive-element_chart_solid" d="M116.1108,67.3252H72.9193l29.9722,31.4,6.28,6.5794a61.6548,61.6548,0,0,0,5.6838-7.191A60.832,60.832,0,0,0,125.21,67.3252ZM108.41,91.3621,94.1279,76.4006H114.715A51.89,51.89,0,0,1,108.41,91.3621Z" transform="translate(-2.7905 -2.8187)"/>
+    <path class="c-interactive-element_chart_hover" d="M114.71,76.4a51.7574,51.7574,0,0,1-6.3,14.96L94.13,76.4Z" transform="translate(-2.7905 -2.8187)"/>
+  </g>
+</svg>
