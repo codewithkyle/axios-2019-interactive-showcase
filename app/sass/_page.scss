@@ -1,20 +1,35 @@
-body{
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+html
+{
+    font-family: 'Noto Sans', sans-serif;
+    line-height: normal; /* [1] */
+    font-weight: 400;
+    color: #000; /* [1] */
+    overflow-y: scroll; /* [2] */
+    overflow-x: hidden;
+    min-height: 100vh; /* [3] */
+    text-align: left;
     position: relative;
-    background-color: #7a4291;
+    scroll-behavior: smooth;
 
-    article{
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+    *{
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
     }
+
+    &.dom-is-loading{
+        *{
+            cursor: wait !important;
+        }
+    }
+}
+
+body{
+    font-size: 1rem; /* [1] */
+    padding: 64px 0;
+    margin: 0;
+    background-color: rebeccapurple;
+}
+
+:root{
+    font-size: 100%;
 }

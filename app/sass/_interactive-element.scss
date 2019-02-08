@@ -1,9 +1,32 @@
 .c-interactive-element{
     display: inline-block;
-    width: 678px;
-    height: 678px;
+    max-width: 678px;
     position: relative;
     margin-right: 100px;
+    width: 100%;
+
+    &::before{
+        content:"";
+        display: none;
+        padding-top: 100%;
+
+        @media (min-width: 460px){
+            display: block;
+        }
+    }
+
+    @media (min-width: 460px){
+        transform: scale(0.7);
+    }
+
+    @media (min-width: 900px){
+        transform: scale(1);
+    }
+
+    @media (max-width: 1800px){
+        display: block;
+        margin: 0;
+    }
 
     a{
         text-decoration: none;
@@ -20,6 +43,7 @@
         text-decoration: none;
         z-index: 2;
         margin-top: 8px;
+
     }
 
     .c-interactive-element_circle{
@@ -30,6 +54,13 @@
         stroke-width: 5px;
         stroke-dasharray: 0 9.0368;
         animation: rotateCircle 120s linear infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        @media (max-width: 460px){
+            display: none;
+        }
     }
 
     .c-interactive-element_clock,
@@ -37,12 +68,32 @@
     .c-interactive-element_checkmark,
     .c-interactive-element_chat,
     .c-interactive-element_chart{
-        display: inline-flex;
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column wrap;
         cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-flow: column wrap;
+
+        @media (max-width: 460px){
+            top: auto !important;
+            left: auto !important;
+            bottom: auto !important;
+            right: auto !important;
+            transform: none !important;
+            margin-bottom: 64px;
+
+            svg{
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 460px){
+            display: inline-flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+        }
 
         svg{
             width: 100px;
@@ -55,6 +106,12 @@
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0);
+
+        @media (max-width: 460px){
+            .c-interactive-element_heart_icon_inner{
+                animation: heartHoverFill 900ms $ease-in infinite;
+            }
+        }
 
         &:hover{
             .c-interactive-element_heart_icon_inner{
@@ -88,6 +145,16 @@
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
             pointer-events: none;
+
+            @media (max-width: 460px){
+                display: none;
+            }
+        }
+
+        @media (max-width: 460px){
+            .c-interactive-element_checkmark_check{
+                animation: checkLoopMobile 800ms $ease-sharp infinite;
+            }
         }
 
         &:hover{
@@ -133,6 +200,21 @@
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
             pointer-events: none;
+
+            @media (max-width: 460px){
+                display: none;
+            }
+        }
+
+        @media (max-width: 460px){
+            .c-interactive-element_clock_top{
+                animation: ringTicker 150ms $ease infinite;
+            }
+
+            .c-interactive-element_clock_button{
+                stroke-dashoffset: -5;
+                transition: all 75ms $ease-in;
+            }
         }
 
         &:hover{
@@ -189,6 +271,29 @@
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
             pointer-events: none;
+
+            @media (max-width: 460px){
+                display: none;
+            }
+        }
+
+        @media (max-width: 460px){
+            .c-interactive-element_chat_item_1_hover,
+            .c-interactive-element_chat_item_2_hover{
+                animation: chatBubbleFill 2000ms $ease-in infinite;
+            }
+
+            .c-interactive-element_chat_item_1_hover{
+                animation-delay: 1000ms;
+            }
+
+            .c-interactive-element_chat_item_2{
+                animation: chatBubble2Wiggle 2000ms $ease infinite;
+            }
+
+            .c-interactive-element_chat_item_1{
+                animation: chatBubble1Wiggle 2000ms $ease infinite;
+            }
         }
 
         &:hover{
@@ -247,6 +352,38 @@
             background: radial-gradient(#fff 50%, rgba(#fff, 0.01), rgba(#fff, 0.005), rgba(#fff, 0) 100%);
             position: absolute;
             pointer-events: none;
+
+            @media (max-width: 460px){
+                display: none;
+            }
+        }
+
+        @media (max-width: 460px){
+            .c-interactive-element_chart_small,
+            .c-interactive-element_chart_medium,
+            .c-interactive-element_chart_large{
+                animation: pieChartWiggle 2000ms linear infinite;
+            }
+
+            .c-interactive-element_chart_medium{
+                animation-delay: 500ms;
+
+                .c-interactive-element_chart_hover{
+                    animation-delay: 500ms;
+                }
+            }
+
+            .c-interactive-element_chart_large{
+                animation-delay: 1000ms;
+
+                .c-interactive-element_chart_hover{
+                    animation-delay: 1000ms;
+                }
+            }
+
+            .c-interactive-element_chart_hover{
+                animation: pieChartFill 2000ms $ease-in infinite;
+            }
         }
 
         &:hover{
@@ -391,6 +528,20 @@
     }
     100%{
         transform: rotate(0deg) translate(-12px, -5px);
+    }
+}
+
+@keyframes checkLoopMobile{
+    0%{
+        stroke-dashoffset: 0;
+    }
+    25%{
+        stroke-dashoffset: -120;
+    }
+    50%,
+    100%{
+        stroke-dashoffset: -240;
+        animation-timing-function: $ease-in;
     }
 }
 

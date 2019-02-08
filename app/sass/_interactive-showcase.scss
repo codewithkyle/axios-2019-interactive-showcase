@@ -1,23 +1,50 @@
 .c-interactive-showcase{
     display: flex;
-    padding: 200px 0;
+    padding: 64px 0;
     justify-content: center;
     background-color: #fff;
     width: 100%;
     font-size: 0;
 
+    @media (min-width: 640px){
+        padding: 25px 0 100px;
+    }
+
+    @media (min-width: 900px){
+        padding: 100px 0;
+    }
+
+    @media (min-width: 1800px){
+        padding: 200px 0;
+    }
+
     .c-interactive-showcase_wrapper{
         display: inline-flex;
-        margin: auto;
         justify-content: center;
         align-items: center;
-        flex-flow: row nowrap;
+        flex-flow: column wrap;
+
+        @media (min-width: 1800px){
+            flex-flow: row nowrap;
+            width: 100%;
+        }
 
         .c-interactive-showcase_content{
             display: inline-block;
             max-width: 733px;
             position: relative;
-            margin: auto;
+            margin-top: 0;
+            padding: 0 32px;
+
+            @media (min-width: 900px){
+                margin-top: 128px;
+                padding: 0;
+            }
+
+            @media (min-width: 1800px){
+                display: block;
+                margin-top: 0;
+            }
 
             h3{
                 display: block;
